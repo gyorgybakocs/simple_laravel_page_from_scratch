@@ -1,0 +1,15 @@
+version: '3.5'
+
+networks:
+  default:
+    external:
+      name: laravel_network
+
+services:
+  npm_laravel_js_watch:
+    container_name: npm_laravel_js_watch
+    image: node:12.14-alpine
+    volumes:
+      - ../app:/var/www/html
+    working_dir: /var/www/html
+    command: sh -c "yarn watch"

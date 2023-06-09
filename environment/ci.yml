@@ -1,0 +1,20 @@
+version: '3.5'
+
+services:
+  composer_laravel_php:
+    container_name: composer_laravel_php
+    build:
+      context: ./php
+    volumes:
+      - ../app:/var/www/html
+      - ../environment:/environment
+    working_dir: /environment/php
+    command: sh -c "chmod +x install.sh; ./install.sh dev;"
+
+  npm_laravel_js:
+    container_name: npm_laravel_js
+    image: node:alpine
+    volumes:
+      - ../app:/var/www/html
+    working_dir: /var/www/html
+    command: sh -c "npm install; npm run dev;"

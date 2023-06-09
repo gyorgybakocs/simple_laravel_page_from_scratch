@@ -1,0 +1,15 @@
+# THIS IS ONLY FOR LOCAL DEVELOPMENT, DO NOT RUN THIS ON PRODUCTION OR STAGING
+version: '3.5'
+
+services:
+  laravel_php_test:
+    build:
+      context: ./php
+    container_name: laravel_php_test
+    environment:
+      - APP_ENV=test
+      - APP_DEBUG=true
+      - XDEBUG_MODE=coverage
+    volumes:
+      - ../app:/var/www/html
+    working_dir: /var/www/html
